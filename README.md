@@ -1,6 +1,6 @@
 # stock-predictor
 
-Here Lies All Code for Stock Prediction Web App for CS361 Winter 2020
+![Image](public/images/googlestock.png)
 
 ## Overview
 
