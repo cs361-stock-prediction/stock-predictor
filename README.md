@@ -4,7 +4,8 @@
 
 ## Overview
 
-Predict those *stonks*
+A Client and Server that operate a website that allows users to predict stocks
+A project for CS361-001 Winter 2020
 
 ## Credits ## 
 
