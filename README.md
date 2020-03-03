@@ -1,6 +1,6 @@
 # stock-predictor
 
-![Image](public/images/googlestock.png)
+![Image](/images/googlestock.png)
 
 ## Overview
 
