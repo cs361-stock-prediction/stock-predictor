@@ -1,92 +1,92 @@
 :root {
 /* Palette: #f9f9f9 #dedede #d64937 #333333 #2d2d2d */
-	--color-header:			#2d2d2d;
-	--color-header-text: 	#f9f9f9;
-	--color-background: 	#f9f9f9;
-	--color-text:			#333333;
-	--color-accent: 		#d64937;
+	--color-header: #2d2d2d;
+	--color-header-text: #f9f9f9;
+	--color-background: #f9f9f9;
+	--color-text: #333333;
+	--color-accent: #d64937;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--color-header:			#212121;
-		--color-header-text: 	#f9f9f9;
-		--color-background: 	#333333;
-		--color-text:			#dedede;
-		--color-accent: 		#d64937;
+		--color-header: #212121;
+		--color-header-text: #f9f9f9;
+		--color-background: #333333;
+		--color-text: #dedede;
+		--color-accent: #d64937;
 	}
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
-    color: var(--color-text);
-    margin: 0px;
-    background: var(--color-background);
+	font-family: "Open Sans", sans-serif;
+	color: var(--color-text);
+	margin: 0px;
+	background: var(--color-background);
 }
 
 /*
- *	=== HEADER ===
+ *      === HEADER ===
  */
 
 header {
-    background-color: var(--color-header);
-    display: flex;
-    
-    align-items: center;
-    position: relative;
-    
-    height: 130px;
-    padding-top: 10px;
-    padding-bottom: 0px;
-    padding-left: 5%;
-    padding-right: 10%;
-    
-    box-shadow: 0 0 15px rgba(0,0,0, 1);
-    
-    margin-bottom: 20px;
+	background-color: var(--color-header);
+	display: flex;
+	
+	align-items: center;
+	position: relative;
+	
+	height: 130px;
+	padding-top: 10px;
+	padding-bottom: 0px;
+	padding-left: 5%;
+	padding-right: 10%;
+	
+	box-shadow: 0 0 15px rgba(0,0,0, 1);
+	
+	margin-bottom: 20px;
 }
 
 .header-image-container {
-    margin: 0 10px;
+	margin: 0 10px;
 }
 .header-image-container>img {
-    height: 120px;
-    max-height: 90%;
+	height: 120px;
+	max-height: 90%;
 }
 .site-title {
-    margin: 10px;
-    display: inline;
-    font-weight:400;
-    font-size: 40px;
+	margin: 10px;
+	display: inline;
+	font-weight:400;
+	font-size: 40px;
 }
 .site-title>a {
-    text-decoration: none;
-    color: var(--color-header-text);
+	text-decoration: none;
+	color: var(--color-header-text);
 }
 
 /*
- *	=== FOOTER ===
+ *      === FOOTER ===
  */
 footer {
-    background-color: var(--color-header);
-    align-items: center;
-    width: 100%;
-    
-    position: fixed;    
-    left:0px;
-    bottom:0px;
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10%;
-    padding-right: 10%;
-    
-    box-shadow: 0 0 5px rgba(0,0,0, 0.5);
+	background-color: var(--color-header);
+	align-items: center;
+	width: 100%;
+	
+	position: fixed;    
+	left:0px;
+	bottom:0px;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10%;
+	padding-right: 10%;
+	
+	box-shadow: 0 0 5px rgba(0,0,0, 0.5);
 }
 
 .footer-text {
-    color: var(--color-accent); 
-    display: inline-block;
-    margin: 5px 15px;
+	color: var(--color-accent); 
+	display: inline-block;
+	margin: 5px 15px;
 }
 
