@@ -6,7 +6,7 @@ webserver = Flask(__name__)
 
 @webserver.route("/")
 def main():
-	return render_template("index.html")
+	return render_template("base.html")
 
 if __name__ == "__main__":
 	webserver.run(debug=True, port=4096)
