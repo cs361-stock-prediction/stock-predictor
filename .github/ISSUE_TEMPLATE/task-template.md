@@ -11,13 +11,13 @@ Due Date:
 Prerequisites: 
 Estimated time:
 
-> Description from doc.
+> Description
 
 # Tasks
 
 ### Client
-- [ ] task
+- [ ] 
 ### Server
-- [ ] task
+- [ ] 
 ### General
-- [ ] task
+- [ ] 
