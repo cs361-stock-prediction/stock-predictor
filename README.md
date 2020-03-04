@@ -7,6 +7,10 @@
 A Client and Server that operate a website that allows users to predict stocks
 A project for CS361-001 Winter 2020
 
+## Starting the Server ##
+
+Simply run `./start.sh` - this will check for requirements, then start the server.
+
 ## Credits ## 
 
 All work here, unless otherwise mentioned, is proprietary work of 
