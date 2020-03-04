@@ -1,13 +1,32 @@
-name: CI
+name: Lint
 
-on: [pull_request]
+on: [pull_request, push]
 
 jobs:
-  build:
-
+  lint:
+    name: Run Linters
     runs-on: ubuntu-latest
-
+    
     steps:
-    - uses: actions/checkout@v2
-    - uses: ricardochaves/python-lint@v1.1.0
-    - uses: stefanoeb/eslint-action@1.0.2
+    - name: Checkout Git Repository
+      uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: scripts/install_requirements.sh
+      
+    - name: Run Linters
+      uses: samuelmeuli/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+       
+        #JavaScript
+        eslint_extensions: js
+        prettier_extensions: js
+        eslint: true
+        prettier: true
+  
+        #Python
+        black_extensions: py
+        flake8_extensions: py
+        black: true
+        flake8: true
