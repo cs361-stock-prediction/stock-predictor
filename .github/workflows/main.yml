@@ -1,0 +1,37 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  stylelint:
+    name: CSS Linter (stylelint)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: stylelint
+        uses: reviewdog/action-stylelint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          stylelint_input: '**/*.css'
+  eslint:
+    name: JS Linter (eslint))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          eslint_flags: 'src/'
+  flake8:
+    name: Python Linter (wemake / Flask8
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: wemake-python
+        uses: wemake-services/wemake-python-styleguide
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: 'github-pr-review'
