@@ -1,3 +1,6 @@
+
+![CI](https://github.com/cs361-stock-prediction/stock-predictor/workflows/CI/badge.svg)
+
 # stock-predictor
 
 ![Image](public/images/googlestock.png)
