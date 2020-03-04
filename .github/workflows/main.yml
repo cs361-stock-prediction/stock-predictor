@@ -3,6 +3,7 @@ name: CI
 on: [pull_request]
 
 jobs:
+
   stylelint:
     name: CSS Linter (stylelint)
     runs-on: ubuntu-latest
@@ -14,8 +15,9 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           stylelint_input: '**/*.css'
+          
   eslint:
-    name: JS Linter (eslint))
+    name: JS Linter (eslint)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -25,13 +27,32 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           eslint_flags: 'src/'
-  flake8:
-    name: Python Linter (wemake / Flask8
+          
+  python_lint:
+    name: Python Linters (black / flake8)
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v1
-      - name: wemake-python
-        uses: wemake-services/wemake-python-styleguide
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: 'github-pr-review'
+    - name: Checkout Git Repository
+      uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: pip3 install flask --user
+      
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install Python dependencies
+      run: pip install black flake8
+
+    - name: Run Linters
+      uses: samuelmeuli/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+  
+        black: true
+        flake8: true
+        black_extensions: py
+        flake8_extensions: py
