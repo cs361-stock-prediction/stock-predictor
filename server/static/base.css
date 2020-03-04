@@ -3,7 +3,8 @@
 /* Accents: #d64937 #ff9900 */
 	--color-header: #2d2d2d;
 	--color-header-text: #f9f9f9;
-	--color-background: #f9f9f9;
+	--color-background: #dedede;
+	--color-foreground: #f9f9f9;
 	--color-text: #333333;
 	--color-accent: #ff9900;
 	
@@ -15,6 +16,7 @@
 		--color-header: #212121;
 		--color-header-text: #f9f9f9;
 		--color-background: #333333;
+		--color-foreground: #444444;
 		--color-text: #dedede;
 		--color-accent: #ff9900;
 	}
