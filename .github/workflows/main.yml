@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
     
     - name: Install Dependencies
-      run: scripts/install_requirements.sh
+      run: pip3 install flask --user
       
     - name: Run Linters
       uses: samuelmeuli/lint-action@v1
