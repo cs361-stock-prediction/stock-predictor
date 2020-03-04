@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stock Predictor</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/static/base.css">
+		
+		{% block header %}{% endblock %}
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+	</head>
+	<body>
+
+		<header>
+
+			<div class="header-image-container">
+				<img src="/static/logo.svg" alt="Site logo">
+			</div>
+
+			<h1 class="site-title"><a href="/">Stock Predictor</a></h1>
+
+		</header>
+		<main class='content'>
+			{% block content %}{% endblock %}
+		</main>
+
+	</body>
+
+    <footer>
+		<div class="footer-container">
+			<p class="footer-text" id="credits-by">Created by: Robert Detjens, Lyell Read, Sam Kendig, Felix Brucker, and Dominykas Zobakas</p>
+			<a class="footer-text" id="credits-for" href="https://github.com/cs361-stock-prediction/stock-predictor">Source on GitHub</a>
+		</div>
+    </footer>
+
+</html>
