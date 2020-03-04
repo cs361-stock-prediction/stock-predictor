@@ -6,12 +6,16 @@ else
 	exit 1
 fi
 
-echo " + Installing Flask for Python 3"
-if pip3 install flask --user; then
-	echo "   Successfully installed flask!"
+if python3 -c "import flaskp" >/dev/null 2>&1; then
+	echo "   Flask already installed."
 else
-	echo " ! Pip3 failed to install flask. Exiting."
-	exit 1
+	echo " + Installing Flask for Python 3"
+	if pip3 install flask --user; then
+		echo "   Successfully installed flask!"
+	else
+		echo " ! Pip3 failed to install flask. Exiting."
+		exit 1
+	fi
 fi
 
 exit 0
