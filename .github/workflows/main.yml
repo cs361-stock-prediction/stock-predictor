@@ -1,13 +1,69 @@
-name: CI
+#name: Lint
 
-on: [pull_request]
+on: [pull_request, push]
 
 jobs:
-  build:
-
+  python_lint:
+    name: Run Python Linters
     runs-on: ubuntu-latest
-
+    
     steps:
-    - uses: actions/checkout@v2
-    - uses: ricardochaves/python-lint@v1.1.0
-    - uses: stefanoeb/eslint-action@1.0.2
+    - name: Checkout Git Repository
+      uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: pip3 install flask --user
+      
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install Python dependencies
+      run: pip install black flake8
+
+    - name: Run Linters
+      uses: samuelmeuli/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+  
+        black: true
+        flake8: true
+        black_extensions: py
+        flake8_extensions: py
+  
+  css_lint:
+    name: Run CSS Linters
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Git Repository
+      uses: actions/checkout@v2
+   
+    - name: Install StyleLint
+      uses: actions/setup-node@v1
+      with:
+        node-version: "12.x"
+    
+    - uses: xt0rted/stylelint-problem-matcher@v1
+    - run: npm ci
+    - run: npm test
+
+  javascript_lint:
+    name: Run Javascript Linters
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v1
+      - uses: stefanoeb/eslint-action@1.0.2
+    #- name: Set up Node.js
+    #  uses: actions/setup-node@v1
+    #  with:
+    #    node-version: 12
+
+    # ESLint and Prettier must be in `package.json`
+    #- name: Install Node.js dependencies
+    #  run: npm install
+      
+    
+        
