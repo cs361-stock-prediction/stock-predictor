@@ -71,25 +71,31 @@ header {
  */
 footer {
 	background-color: var(--color-header);
-	align-items: center;
 	width: 100%;
 	
 	position: fixed;    
 	left:0px;
 	bottom:0px;
 	
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding: 10px 10%;
 	
 	box-shadow: 0 0 5px rgba(0,0,0, 0.5);
 }
-
+.footer-container {
+	display: flex;
+	flex-direction: row;
+}
 .footer-text {
 	color: var(--color-accent); 
 	display: inline-block;
 	margin: 5px 15px;
+}
+#credits-by {
+	align-self: flex-start;
+	flex-grow: 1
+}
+#credits-for {
+	align-self: flex-end;
 }
 
 /*
