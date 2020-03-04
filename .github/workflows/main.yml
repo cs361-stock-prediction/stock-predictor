@@ -8,8 +8,13 @@ jobs:
     name: CSS Linter (stylelint)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: stylelint
+      - name: Checkout Git Repository
+        uses: actions/checkout@v2
+      
+      - name: Install Dependencies
+        run: npm install stylelint stylelint-config-recommended
+        
+      - name: Run StyleLint
         uses: reviewdog/action-stylelint@v1
         with:
           github_token: ${{ secrets.github_token }}
@@ -20,8 +25,13 @@ jobs:
     name: JS Linter (eslint)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: eslint
+      - name: Checkout Git Repository
+        uses: actions/checkout@v2
+      
+      - name: Install Dependencies
+        run: npm install eslint
+        
+      - name: Run ESLint
         uses: reviewdog/action-eslint@v1
         with:
           github_token: ${{ secrets.github_token }}
