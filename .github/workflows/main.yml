@@ -20,13 +20,15 @@ jobs:
         github_token: ${{ secrets.github_token }}
        
         #JavaScript
-        eslint_extensions: js
-        prettier_extensions: js
         eslint: true
         prettier: true
+        eslint_extensions: js
+        prettier_extensions: js
+        
   
         #Python
-        black_extensions: py
-        flake8_extensions: py
         black: true
         flake8: true
+        black_extensions: py
+        flake8_extensions: py
+        
