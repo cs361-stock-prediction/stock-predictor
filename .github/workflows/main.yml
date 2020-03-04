@@ -36,7 +36,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          eslint_flags: '**/*.js'
+          eslint_flags: '-c'
           
   python_lint:
     name: Python Linters (black / flake8)
