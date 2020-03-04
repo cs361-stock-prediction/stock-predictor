@@ -6,6 +6,8 @@
 	--color-background: #f9f9f9;
 	--color-text: #333333;
 	--color-accent: #ff9900;
+	
+	--padding-sides: 5%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,14 +35,11 @@ header {
 	background-color: var(--color-header);
 	display: flex;
 	
-	align-items: center;
+	align-items: end;
 	position: relative;
 	
 	height: 130px;
-	padding-top: 10px;
-	padding-bottom: 0px;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding: 10px var(--padding-sides);
 	
 	box-shadow: 0 0 15px rgba(0,0,0, 1);
 	
@@ -73,17 +72,18 @@ footer {
 	background-color: var(--color-header);
 	width: 100%;
 	
-	position: fixed;    
+	position: fixed;
 	left:0px;
 	bottom:0px;
 	
-	padding: 10px 10%;
+	padding: 10px 0;
 	
 	box-shadow: 0 0 5px rgba(0,0,0, 0.5);
 }
 .footer-container {
 	display: flex;
 	flex-direction: row;
+	padding: 0 var(--padding-sides);
 }
 .footer-text {
 	color: var(--color-accent); 
@@ -103,5 +103,5 @@ footer {
  */
 
 .content {
-	margin: 3% 10%;
+	margin: 3% var(--padding-sides);
 }
