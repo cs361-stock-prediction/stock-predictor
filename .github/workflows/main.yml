@@ -51,7 +51,6 @@ jobs:
       uses: samuelmeuli/lint-action@v1
       with:
         github_token: ${{ secrets.github_token }}
-  
         black: true
         flake8: true
         black_extensions: py
