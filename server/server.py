@@ -31,5 +31,6 @@ def favicon32():
     return send_from_directory(os.path.join(webserver.root_path, 'static'),
                                 'favicon-32x32.png', mimetype='image/vnd.microsoft.icon')
 
+
 if __name__ == "__main__":
     webserver.run(debug=True, host="0.0.0.0", port=4096)
