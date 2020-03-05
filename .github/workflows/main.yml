@@ -62,4 +62,4 @@ jobs:
         github_token: ${{ secrets.github_token }}
         flake8: true
         flake8_extensions: py
-        flake8_args: "--ignore=E301,E302,E303,E401,E501"
+        flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
