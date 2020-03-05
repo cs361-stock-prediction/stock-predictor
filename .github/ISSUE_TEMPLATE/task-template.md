@@ -1,5 +1,5 @@
 ---
-name: Task template
+name: Task Template
 about: Template for tasks.
 title: ''
 labels: task
