@@ -37,8 +37,8 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
 
-  python_lint:
-    name: Python Linters (black / flake8)
+  flake8_lint:
+    name: Python Linters (flake8)
     runs-on: ubuntu-latest
 
     steps:
@@ -54,13 +54,12 @@ jobs:
         python-version: 3.8
 
     - name: Install Python dependencies
-      run: pip install black flake8
+      run: pip install flake8
 
     - name: Run Linters
       uses: samuelmeuli/lint-action@v1
       with:
         github_token: ${{ secrets.github_token }}
-        black: true
         flake8: true
-        black_extensions: py
         flake8_extensions: py
+        flake8_args: "--ignore=E301,E302,E303,E401,E501"
