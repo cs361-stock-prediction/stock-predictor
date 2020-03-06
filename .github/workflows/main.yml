@@ -47,7 +47,7 @@ jobs:
       with:
         github_token: ${{ secrets.github_token }}
         stylelint: true
-        autofix: true
+        stylelint_args: "--fix"
           
   eslint:
     name: JS Linter (eslint)
@@ -65,5 +65,5 @@ jobs:
       with:
         github_token: ${{ secrets.github_token }}
         eslint: true
-        autofix: true
+        eslint_args: "--fix"
 
