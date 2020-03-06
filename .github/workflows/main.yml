@@ -4,41 +4,8 @@ on: [pull_request]
 
 jobs:
 
-  stylelint:
-    name: CSS Linter (stylelint)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Git Repository
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: npm install stylelint stylelint-config-recommended
-
-      - name: Run StyleLint
-        uses: reviewdog/action-stylelint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          stylelint_input: '**/*.css'
-
-  eslint:
-    name: JS Linter (eslint)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Git Repository
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: npm install eslint
-
-      - name: Run ESLint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-
   flake8_lint:
-    name: Python Linters (flake8)
+    name: Python Linter (flake8)
     runs-on: ubuntu-latest
 
     steps:
@@ -63,3 +30,40 @@ jobs:
         flake8: true
         flake8_extensions: py
         flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
+  
+  stylelint:
+    name: CSS Linter (stylelint)
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      
+    - name: Set up dependencies
+      run: npm install stylelint stylelint-config-standard
+      
+    - name: Run linter
+      uses: samuelmeuli/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+        stylelint: true
+        autofix: true
+          
+  eslint:
+    name: JS Linter (eslint)
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      
+    - name: Set up dependencies
+      run: npm install eslint
+      
+    - name: Run linter
+      uses: samuelmeuli/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+        eslint: true
+        autofix: true
+

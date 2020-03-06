@@ -1,13 +1,13 @@
 :root {
-/* Palette: #f9f9f9 #d64937 #333333 #2d2d2d */
-/* Accents: #d64937 #ff9900 */
+	/* Palette: #f9f9f9 #d64937 #333333 #2d2d2d */
+
+	/* Accents: #d64937 #ff9900 */
 	--color-header: #2d2d2d;
 	--color-header-text: #f9f9f9;
 	--color-background: #dedede;
 	--color-foreground: #f9f9f9;
-	--color-text: #333333;
-	--color-accent: #ff9900;
-	
+	--color-text: #333;
+	--color-accent: #f90;
 	--padding-sides: 5%;
 }
 
@@ -15,17 +15,17 @@
 	:root {
 		--color-header: #212121;
 		--color-header-text: #f9f9f9;
-		--color-background: #333333;
-		--color-foreground: #444444;
+		--color-background: #333;
+		--color-foreground: #444;
 		--color-text: #dedede;
-		--color-accent: #ff9900;
+		--color-accent: #f90;
 	}
 }
 
 body {
 	font-family: "Open Sans", sans-serif;
 	color: var(--color-text);
-	margin: 0px;
+	margin: 0;
 	background: var(--color-background);
 }
 
@@ -36,25 +36,23 @@ body {
 header {
 	background-color: var(--color-header);
 	display: flex;
-	
 	align-items: end;
 	position: relative;
-	
 	height: 130px;
 	padding: 10px var(--padding-sides);
-	
-	box-shadow: 0 0 15px rgba(0,0,0, 1);
-	
+	box-shadow: 0 0 15px rgba(0, 0, 0, 1);
 	margin-bottom: 20px;
 }
 
 .header-image-container {
 	margin: 0 10px;
 }
-.header-image-container>img {
+
+.header-image-container > img {
 	height: 120px;
 	max-height: 90%;
 }
+
 .site-title {
 	margin: 10px;
 	display: inline;
@@ -62,7 +60,8 @@ header {
 	font-family: "Source Code Pro", monospace;
 	font-size: 50px;
 }
-.site-title>a {
+
+.site-title > a {
 	text-decoration: none;
 	color: var(--color-header-text);
 }
@@ -73,29 +72,30 @@ header {
 footer {
 	background-color: var(--color-header);
 	width: 100%;
-	
 	position: fixed;
-	left:0px;
-	bottom:0px;
-	
+	left: 0;
+	bottom: 0;
 	padding: 10px 0;
-	
-	box-shadow: 0 0 5px rgba(0,0,0, 0.5);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .footer-container {
 	display: flex;
 	flex-direction: row;
 	padding: 0 var(--padding-sides);
 }
+
 .footer-text {
-	color: var(--color-accent); 
+	color: var(--color-accent);
 	display: inline-block;
 	margin: 5px 15px;
 }
+
 #credits-by {
 	align-self: flex-start;
-	flex-grow: 1
+	flex-grow: 1;
 }
+
 #credits-for {
 	align-self: flex-end;
 }
@@ -103,7 +103,6 @@ footer {
 /*
  *  === BODY ===
  */
-
 .content {
 	margin: 3% var(--padding-sides);
 }
