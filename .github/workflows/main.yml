@@ -30,6 +30,7 @@ jobs:
         flake8: true
         flake8_extensions: py
         flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
+        auto_fix: true
   
   stylelint:
     name: CSS Linter (stylelint)
@@ -38,6 +39,11 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
       
     - name: Set up dependencies
       run: npm install stylelint stylelint-config-standard
@@ -47,7 +53,7 @@ jobs:
       with:
         github_token: ${{ secrets.github_token }}
         stylelint: true
-        stylelint_args: "--fix"
+        auto_fix: true
           
   eslint:
     name: JS Linter (eslint)
@@ -56,6 +62,11 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
+
+    - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
       
     - name: Set up dependencies
       run: npm install eslint
@@ -65,5 +76,5 @@ jobs:
       with:
         github_token: ${{ secrets.github_token }}
         eslint: true
-        eslint_args: "--fix"
+        auto_fix: true
 
