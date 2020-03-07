@@ -7,16 +7,16 @@
 Payload:
 ```json
 {
-	timeframe: "week"|"month"|"year"
+	'timeframe': "week"|"month"|"year"
 }
 ```
 
 Reply:
 ```json
 {
-	<ticker>: [
-		[date, [$open, $close]], 
-		[date, [$open, $close]], 
+	'<ticker>': [
+		["date", [$open, $close]], 
+		["date", [$open, $close]], 
 		...
 	] 
 }
@@ -30,16 +30,16 @@ Reply:
 Payload:
 ```json
 {
-    timeframe: "week"|"month"|"year"
+    'timeframe': "week"|"month"|"year"
 }
 ```
 
 Reply:
 ```json
 {
-	<ticker>: [
-		[date, [$open, $close]], 
-		[date, [$open, $close]], 
+	'<ticker>': [
+		["date", [$open, $close]], 
+		["date", [$open, $close]], 
 		...
 	]
 }
@@ -53,14 +53,14 @@ Reply:
 Payload:
 ```json
 {
-	session-id: ""
+	'session-id': ""
 }
 ```
 
 Reply:
 ```json
 {
-	saved: [
+	'saved': [
 		"ticker",
 		"ticker",
 		...
@@ -76,14 +76,14 @@ Reply:
 Payload:
 ```json
 {
-	session-id: ""
+	'session-id': ""
 }
 ```
 
 Reply:
 ```json
 {
-	history: [
+	'history': [
 		"ticker",
 		"ticker",
 		...
@@ -99,8 +99,8 @@ Reply:
 Payload:
 ```json
 {
-	session-id: "",
-	ticker: "<ticker>"
+	'session-id': "",
+	'ticker': "<ticker>"
 }
 ```
 
@@ -117,8 +117,8 @@ Reply:
 Payload:
 ```json
 {
-	session-id: "",
-	ticker: "<ticker>"
+	'session-id': "",
+	'ticker': "<ticker>"
 }
 ```
 
@@ -135,8 +135,8 @@ Reply:
 Payload:
 ```json
 {
-	session-id: "",
-	ticker: "<ticker>"
+	'session-id': "",
+	'ticker': "<ticker>"
 }
 ```
 
