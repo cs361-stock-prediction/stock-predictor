@@ -9,68 +9,67 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Git Repository
-      uses: actions/checkout@v2
+      - name: Checkout Git Repository
+        uses: actions/checkout@v2
 
-    - name: Install Dependencies
-      run: pip3 install flask --user
+      - name: Install Dependencies
+        run: pip3 install flask --user
 
-    - name: Set up Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
 
-    - name: Install Python dependencies
-      run: pip install flake8
+      - name: Install Python dependencies
+        run: pip install flake8
 
-    - name: Run Linters
-      uses: samuelmeuli/lint-action@v1
-      with:
-        github_token: ${{ secrets.github_token }}
-        flake8: true
-        flake8_extensions: py
-        flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
-        auto_fix: true
-  
+      - name: Run Linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          flake8: true
+          flake8_extensions: py
+          flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
+          auto_fix: true
+
   stylelint:
     name: CSS Linter (stylelint)
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      
-    - name: Set up dependencies
-      run: npm install stylelint stylelint-config-standard
-      
-    - name: Run linter
-      uses: samuelmeuli/lint-action@v1
-      with:
-        github_token: ${{ secrets.github_token }}
-        stylelint: true
-        auto_fix: true
-          
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+
+      - name: Set up dependencies
+        run: npm install stylelint stylelint-config-standard
+
+      - name: Run linter
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          stylelint: true
+          auto_fix: true
+
   eslint:
     name: JS Linter (eslint)
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v1
-      
-    - name: Set up dependencies
-      run: npm install eslint
-      
-    - name: Run linter
-      uses: samuelmeuli/lint-action@v1
-      with:
-        github_token: ${{ secrets.github_token }}
-        eslint: true
-        auto_fix: true
 
+      - name: Set up dependencies
+        run: npm install eslint
+
+      - name: Run linter
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          eslint: true
+          auto_fix: true
