@@ -7,14 +7,17 @@
 
 ## Overview
 
-A Client and Server that operate a website that allows users to predict stocks
-A project for CS361-001 Winter 2020
+A Client and Server that operate a website that allows users to predict stocks.
 
-## Starting the Server ##
+*CS361 Winter 2020 project*
 
-Simply run `./start.sh` - this will check for requirements, then start the server.
+API Documentation [here](/API.md).
 
-## Credits ## 
+## Starting the Server
+
+Simply run `./start.sh` - this will check for requirements, then start the server. *Linux only*
+
+## Credits
 
 All work here, unless otherwise mentioned, is proprietary work of 
 
