@@ -142,7 +142,7 @@ Payload:
 
 Reply:
 ```json
-200 OK / 201 Created
+200 OK
 ```
 (OR `401 Unauthorized` if account session has expired)
 
