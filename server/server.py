@@ -12,6 +12,10 @@ webserver = Flask(__name__)
 def main():
     return render_template("index.html")
 
+@webserver.route("/settings.html")
+def settings():
+    return render_template("settings.html")
+
 
 # serve favicons
 @webserver.route('/favicon.ico')
