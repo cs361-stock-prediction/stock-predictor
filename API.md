@@ -30,7 +30,7 @@ Reply:
 Payload:
 ```json
 {
-    'timeframe': "week"|"month"|"year"
+	'timeframe': "week"|"month"|"year"
 }
 ```
 
