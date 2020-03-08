@@ -6,7 +6,8 @@
 	background-color: white;
 }
 
-#uploadbutton, #uploadbutton2 {
+#uploadbutton,
+#uploadbutton2 {
 	margin-top: 15px;
 	height: 50px;
 	background-color: var(--color-header);
