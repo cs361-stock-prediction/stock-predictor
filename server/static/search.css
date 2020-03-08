@@ -52,12 +52,14 @@
 .result-label {
 	font-size: 30px;
 	font-weight: 700;
-	margin-bottom: 15px
+	margin-bottom: 15px;
 }
+
 .result-ticker {
 	width: 200px;
 }
-.result-ticker>a {
+
+.result-ticker > a {
 	color: var(--color-accent);
 }
 
