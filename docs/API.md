@@ -1,5 +1,26 @@
 # API Documentation
 
+## General methods:
+
+### Stock search
+
+```
+GET:/search?query=<ticker>
+```
+
+```
+POST:/search
+	session-id: ""
+	query: <ticker>
+```
+
+Reply:
+Search result webpage, not JSON
+
+
+This request uses HTML form requests to send querys. 
+See [the MDN documentation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data#On_the_server_side_retrieving_the_data) for how the payload is structured.
+
 ### Get stock data
 
 `GET:/api/stockdata/<ticker>`
@@ -45,6 +66,8 @@ Reply:
 }
 ```
 (Date being in increments of one day for all timeframes)
+
+## Account methods:
 
 ### Get saved stocks for current user
 

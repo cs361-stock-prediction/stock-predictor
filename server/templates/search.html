@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/search.css">
+<script src="/static/search.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class='content-block'>
+	<form id='search-container' method='post' action='/search'>
+		<input type='search' id='search-entry' name='query' placeholder='Search for a stock...' required>
+		<button type="submit" id='search-submit'><i class="fa fa-search"></i></button>
+	</form>
+</div>
+
+<div class='content-block'>
+	<div class='result-label'>Search Results for {{ query }}</div>
+	<table class='results-table'>
+		<tr class='result-header-row'>
+			<th class='results-header'>Ticker symbol</th>
+			<th class='results-header'>Stock name</th>
+		</tr>
+		{% for stock in results %}
+		<tr class='result-row'>
+			<td class='result-ticker'><a href="/prediction/{{ stock['1. symbol'] }}">{{ stock['1. symbol'] }}</a></td>
+			<td class='result-name'>{{ stock['2. name'] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 /*
- *  === INDEX PAGE ===
+ *  === SEARCH RESULTS ===
  */
 
 .content-block {
@@ -43,4 +43,26 @@
 
 #search-submit:hover {
 	background: var(--color-accent);
+}
+
+/*
+	=== Search results ===
+*/
+
+.result-label {
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+.result-ticker {
+	width: 200px;
+}
+
+.result-ticker > a {
+	color: var(--color-accent);
+}
+
+.result-name {
+	color: var(--color-text);
 }
