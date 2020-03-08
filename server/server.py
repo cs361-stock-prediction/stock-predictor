@@ -29,7 +29,6 @@ def settings():
 def createaccount():
     return render_template("accounts.html")
 
-
 # serve favicons
 @webserver.route('/favicon.ico')
 def favicon():

@@ -31,6 +31,7 @@
 #flex-container > .content-block {
 	width: 300px;
 }
+
 #search-container {
 	padding: 5px;
 	display: flex;
