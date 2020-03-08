@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 
 # for login: https://www.youtube.com/watch?v=8aTnmsDMldY
 
@@ -11,6 +11,11 @@ webserver = Flask(__name__)
 @webserver.route("/")
 def main():
     return render_template("index.html")
+    
+# serve bare search page
+@webserver.route("/search", methods=['GET', 'POST'])
+def search():
+    return render_template("search.html", query=request.form['query'])
 
 @webserver.route("/settings.html")
 def settings():
