@@ -1,4 +1,4 @@
-import os, json, requests
+import os, requests
 
 from flask import Flask, render_template, send_from_directory, request
 
@@ -12,13 +12,13 @@ API_KEY = '2T50TIVI1285LSG4'
 @webserver.route("/")
 def main():
     return render_template("index.html")
-    
+
 # serve bare search page
 @webserver.route("/search", methods=['GET', 'POST'])
 def search():
-    res = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=2T50TIVI1285LSG4&keywords='+request.form['query'])
+    res = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=2T50TIVI1285LSG4&keywords=' + request.form['query'])
     json = res.json()['bestMatches']
-    
+
     return render_template("search.html", query=request.form['query'], results=json)
 
 @webserver.route("/settings.html")
