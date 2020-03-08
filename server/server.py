@@ -21,32 +21,26 @@ def search():
 
     return render_template("search.html", query=request.form['query'], results=json)
 
-@webserver.route("/settings.html")
+@webserver.route("/settings")
 def settings():
     return render_template("settings.html")
 
-@webserver.route("/accounts.html")
+@webserver.route("/accounts")
 def createaccount():
     return render_template("accounts.html")
 
 # serve favicons
 @webserver.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(webserver.root_path, 'static'),
-                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
+    return send_from_directory(os.path.join(webserver.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @webserver.route('/favicon-16x16.png')
 def favicon16():
-    return send_from_directory(os.path.join(webserver.root_path, 'static'),
-                                'favicon-16x16.png', mimetype='image/vnd.microsoft.icon')
-
+    return send_from_directory(os.path.join(webserver.root_path, 'static'), 'favicon-16x16.png', mimetype='image/vnd.microsoft.icon')
 
 @webserver.route('/favicon-32x32.png')
 def favicon32():
-    return send_from_directory(os.path.join(webserver.root_path, 'static'),
-                                'favicon-32x32.png', mimetype='image/vnd.microsoft.icon')
-
+    return send_from_directory(os.path.join(webserver.root_path, 'static'), 'favicon-32x32.png', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == "__main__":
     webserver.run(debug=True, host="0.0.0.0", port=4096)
