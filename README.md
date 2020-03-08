@@ -3,7 +3,7 @@
 
 # stock-predictor
 
-![Image](/images/googlestock.png)
+![Image](docs/images/googlestock.png)
 
 ## Overview
 
@@ -11,7 +11,7 @@ A Client and Server that operate a website that allows users to predict stocks.
 
 *CS361 Winter 2020 project*
 
-API Documentation [here](/API.md).
+API Documentation [here](docs/API.md).
 
 ## Starting the Server
 
