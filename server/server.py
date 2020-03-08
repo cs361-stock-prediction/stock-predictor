@@ -16,6 +16,10 @@ def main():
 def settings():
     return render_template("settings.html")
 
+@webserver.route("/createaccount.html")
+def createaccount():
+    return render_template("createaccount.html")
+
 
 # serve favicons
 @webserver.route('/favicon.ico')

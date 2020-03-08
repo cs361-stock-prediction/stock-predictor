@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/index.css">
+<script src="/static/index.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div id="flex-container">
+    <div class='content-block'>
+        <h1>Create Account</h1>
+        <label for="uname2">Username:</label><br>
+        <input type="text" id="uname2" name="uname2"><br>
+        <label for="paword2">Password:</label><br>
+        <input type="text" id="paword2" name="paword2"><br>
+        <label for="paword3">Retype Password:</label><br>
+        <input type="text" id="paword3" name="paword3"><br>
+    
+        <label for="avatar">Avatar:</label><br>
+        <input type="button" id="avatar" name="avatar" value="Upload"><br>
+        <input type="button" id="uploadbutton2" name="uploadbutton2" value="Create Free Account"><br>
+    </div>
+    <div class='content-block'>
+        <h1>Login</h1>
+        <label for="uname">Username:</label><br>
+        <input type="text" id="uname" name="uname"><br>
+        <label for="paword">Password:</label><br>
+        <input type="text" id="paword" name="paword"><br>
+        <input type="button" id="uploadbutton" name="uploadbutton" value="Log In"><br>
+    </div>
+</div>
+
+{% endblock %}
