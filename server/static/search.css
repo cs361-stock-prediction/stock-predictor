@@ -8,14 +8,35 @@
 }
 
 #search-container {
-	padding: 10px;
-}
-
-#search-entry {
+	padding: 5px;
+	display: flex;
 }
 
 #search-label {
+	margin: 5px 0;
+}
+
+#search-entry {
+	margin: 0;
+	height: 40px;
+	font-size: 20px;
+	flex-grow: 1;
+	background: var(--color-foreground);
+	color: var(--color-text);
+	padding: 10px;
+	border: 2px solid var(--color-background);
 }
 
 #search-submit {
+	margin: 0;
+	height: 40px;
+	width: 40px;
+	background: var(--color-background);	
+	font-size: 25px;
+	color: var(--color-text);
+	border: none;
+	text-align: center;
+}
+#search-submit:hover {
+	background: var(--color-accent);
 }

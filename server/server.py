@@ -13,7 +13,7 @@ API_KEY = '2T50TIVI1285LSG4'
 def main():
     return render_template("index.html")
 
-# serve bare search page
+# serve search page
 @webserver.route("/search", methods=['GET', 'POST'])
 def search():
     res = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=2T50TIVI1285LSG4&keywords=' + request.form['query'])
