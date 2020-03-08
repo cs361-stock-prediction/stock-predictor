@@ -8,8 +8,7 @@
 {% block content %}
 <div class='content-block'>
 	<form id='search-container' method='post' action='/search'>
-		<label for='query' id='search-label'>Search for a stock: </label><br>
-		<input type='search' id='search-entry' name='query'>
+		<input type='search' id='search-entry' name='query' placeholder='Search for a stock...' required>
 		<button type="submit" id='search-submit'><i class="fa fa-search"></i></button>
 	</form>
 </div>

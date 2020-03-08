@@ -8,21 +8,22 @@
 {% block content %}
 <div class='content-block'>
 	<form id='search-container' method='post' action='/search'>
-		<label for='query' id='search-label'>Search for a stock: </label><br>
-		<input type='search' id='search-entry' name='query'>
+		<input type='search' id='search-entry' name='query' placeholder='Search for a stock...' required>
 		<button type="submit" id='search-submit'><i class="fa fa-search"></i></button>
 	</form>
 </div>
 
-<div class='content-block' id='recent-container'>
+<div class='content-block'>
 	<h3>Search Results for {{ query }}</h3>
-	<table>
-		<th>Ticker symbol</th>
-		<th>Stock name</th>
+	<table class='results-table'>
+		<tr class='result-header-row'>
+			<th class='results-header'>Ticker symbol</th>
+			<th class='results-header'>Stock name</th>
+		</tr>
 		{% for stock in results %}
-		<tr class='search-result'>
-			<td><a href="/prediction/{{ stock['1. symbol'] }}">{{ stock['1. symbol'] }}</a></td>
-			<td>{{ stock['2. name'] }}</td>
+		<tr class='result-row'>
+			<td class='result-ticker'><a href="/prediction/{{ stock['1. symbol'] }}">{{ stock['1. symbol'] }}</a></td>
+			<td class='result-name'>{{ stock['2. name'] }}</td>
 		</tr>
 		{% endfor %}
 	</table>
