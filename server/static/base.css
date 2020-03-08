@@ -24,8 +24,8 @@
 
 @media (max-width: 600px) {
 	footer {
-		height: 0px;
-		visibility: hidden
+		height: 0;
+		visibility: hidden;
 	}
 }
 
