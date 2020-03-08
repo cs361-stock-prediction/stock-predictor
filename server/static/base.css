@@ -66,11 +66,32 @@ header {
 	font-weight: 400;
 	font-family: "Source Code Pro", monospace;
 	font-size: 50px;
+	bottom: 0;
+	flex-grow: 1;
 }
 
 .site-title > a {
 	text-decoration: none;
 	color: var(--color-header-text);
+}
+
+.login-button {
+	margin: 10px;
+	display: inline;
+	font-weight: 400;
+	font-family: "Source Code Pro", monospace;
+	font-size: 50px;
+	bottom: 0;
+}
+
+.login-button > a {
+	font-size: 15px;
+	color: var(--color-header-text);
+	text-decoration: none;
+}
+
+.login-button > a:hover {
+	color: var(--color-accent);
 }
 
 /*
