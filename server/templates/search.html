@@ -6,7 +6,25 @@
 {% endblock %}
 
 {% block content %}
+<div class='content-block'>
+	<form id='search-container' method='post' action='/search'>
+		<label for='query' id='search-label'>Search for a stock: </label><br>
+		<input type='search' id='search-entry' name='query'>
+		<button type="submit" id='search-submit'><i class="fa fa-search"></i></button>
+	</form>
+</div>
+
 <div class='content-block' id='recent-container'>
 	<h3>Search Results for {{ query }}</h3>
+	<table>
+		<th>Ticker symbol</th>
+		<th>Stock name</th>
+		{% for stock in results %}
+		<tr class='search-result'>
+			<td><a href="/prediction/{{ stock['1. symbol'] }}">{{ stock['1. symbol'] }}</a></td>
+			<td>{{ stock['2. name'] }}</td>
+		</tr>
+		{% endfor %}
+	</table>
 </div>
 {% endblock %}
