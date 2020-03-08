@@ -17,8 +17,8 @@ def main():
 # serve search page
 @webserver.route("/search", methods=['GET', 'POST'])
 def search():
-    res = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=2T50TIVI1285LSG4&keywords=' + request.form['query'])
-    json = res.json()['bestMatches']
+    resp = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=' + API_KEY + '&keywords=' + request.form['query'])
+    json = resp.json()['bestMatches']
 
     return render_template("search.html", query=request.form['query'], results=json)
 
@@ -28,9 +28,9 @@ def settings():
     return render_template("settings.html")
 
 
-@webserver.route("/accounts")
+@webserver.route("/login")
 def createaccount():
-    return render_template("accounts.html")
+    return render_template("login.html")
 
 # serve favicons
 @webserver.route('/favicon.ico')
