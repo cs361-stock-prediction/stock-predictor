@@ -2,7 +2,7 @@
  *  === BODY ===
  */
 
-.content-box {
+ .content-box {
 	margin: 2% 10%;
 }
 
@@ -14,23 +14,9 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#avatar{
-	background-color: white;
-}
-
-#uploadbutton, #uploadbutton2 {
+#uploadbutton,
+#uploadbutton2 {
 	margin-top: 15px;
 	height: 50px;
-	background-color: var(--color-header);
-	color: var(--color-accent);
-}
-
-#flex-container {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-}
-
-#flex-container > .content-block{
-	width: 300px;
+	background-color: white;
 }
