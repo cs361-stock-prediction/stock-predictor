@@ -1,6 +1,4 @@
-/*
- *  === INDEX PAGE ===
- */
+
 
 .content-block {
 	background-color: var(--color-foreground);
@@ -8,15 +6,4 @@
 	padding: 10px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#search-container {
-	padding: 10px;
-}
-
-#search-entry {
-}
-#search-label {
-}
-#search-submit {
 }

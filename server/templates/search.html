@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/search.css">
+<script src="/static/search.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class='content-block' id='recent-container'>
+	<h3>Search Results for {{ query }}</h3>
+</div>
+{% endblock %}
