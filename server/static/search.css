@@ -59,6 +59,10 @@
 	width: 200px;
 }
 
+.results-header {
+	text-align: left;
+}
+
 .result-ticker > a {
 	color: var(--color-accent);
 }
