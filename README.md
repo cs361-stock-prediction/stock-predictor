@@ -7,9 +7,9 @@
 
 ## Overview
 
-A Client and Server that operate a website that allows users to predict stocks.
+A Client and Server that operate a website that allows users to predict stocks. 
 
-*CS361 Winter 2020 project*
+This is for the final project in CS361-001 Winter 2020
 
 API Documentation [here](docs/API.md).
 
