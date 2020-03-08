@@ -18,4 +18,17 @@ else
 	fi
 fi
 
+if python3 -c "import pymongo" >/dev/null 2>&1; then
+    echo " + PyMongo already installed."
+else
+    echo " + Installing PyMongo for Python 3"
+    if pip3 install pymongo --user; then
+        echo " + Successfully installed pymongo!"
+    else
+        echo " E Pip3 failed to install pymongo. Exiting."
+        exit 1
+    fi
+fi
+
+
 exit 0
