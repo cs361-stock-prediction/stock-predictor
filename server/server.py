@@ -12,7 +12,7 @@ login_manager = flask_login.LoginManager()
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=50, message='Password must be 8 to 50 characters long')])
+    password = PasswordField('Password', validators=[InputRequired()])
     rememberme = BooleanField('Remember Me')
     submit = SubmitField('Log In')
     
@@ -56,6 +56,7 @@ def login():
         print('LOGIN with:')
         print('username: ' + login.username.data)
         print('password: ' + login.password.data)
+        print('remember: ' + str(login.rememberme.data))
         return redirect('/')
 
     return render_template("login.html", login=login)
@@ -69,6 +70,7 @@ def createacct():
         print('ACCOUNT CREATE with:')
         print('username: ' + create.username.data)
         print('password: ' + create.password.data)
+        print('avatar: ' + create.avatar.data)
         return redirect('/')
 
     return render_template("createacct.html", create=create)

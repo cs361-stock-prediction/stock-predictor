@@ -31,7 +31,10 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ create.avatar() }} {{ create.avatar.label }}</p>
+        <p>
+            {{ create.avatar.label }}<br>
+            {{ create.avatar() }}
+        </p>
         <p>{{ create.submit() }}</p>
     </form>
 </div>
