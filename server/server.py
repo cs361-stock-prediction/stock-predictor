@@ -8,6 +8,7 @@ from wtforms import StringField, PasswordField, BooleanField, FileField, SubmitF
 from wtforms.validators import InputRequired, Email, Length, EqualTo
 
 import flask_login
+login_manager = flask_login.LoginManager()
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
@@ -22,10 +23,9 @@ class CreateAcctForm(FlaskForm):
     avatar = FileField('Avatar')
     submit = SubmitField('Create Account')
 
-# for login: https://www.youtube.com/watch?v=8aTnmsDMldY
 
 webserver = Flask(__name__)
-webserver.config['SECRET_KEY'] = 'my-name-a-borat'
+webserver.secret_key = 'my-name-a-borat'
 
 API_KEY = '2T50TIVI1285LSG4'
 
@@ -47,13 +47,6 @@ def search():
 def settings():
     return render_template("settings.html")
 
-
-#  ~ @webserver.route("/login")
-#  ~ def login():
-    #  ~ form = LoginForm()
-    
-    #  ~ return render_template("login.html", form=form)
-    
     
 @webserver.route("/login", methods=['GET', 'POST'])
 def login():
@@ -64,13 +57,21 @@ def login():
         print('username: ' + login.username.data)
         print('password: ' + login.password.data)
         return redirect('/')
+
+    return render_template("login.html", login=login)
+    
+    
+@webserver.route("/createacct", methods=['GET', 'POST'])
+def createacct():
+    create = CreateAcctForm()
+    
     if create.validate_on_submit():
         print('ACCOUNT CREATE with:')
         print('username: ' + create.username.data)
         print('password: ' + create.password.data)
         return redirect('/')
 
-    return render_template("login-new.html", login=login, create=create)
+    return render_template("createacct.html", create=create)
 
 # serve favicons
 @webserver.route('/favicon.ico')
