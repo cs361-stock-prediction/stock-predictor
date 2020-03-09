@@ -5,7 +5,7 @@ from flask import Flask, render_template, send_from_directory, request, redirect
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, FileField, SubmitField
-from wtforms.validators import InputRequired, Email, Length, EqualTo
+from wtforms.validators import InputRequired, Length, EqualTo
 
 import flask_login
 login_manager = flask_login.LoginManager()
@@ -51,7 +51,6 @@ def settings():
 @webserver.route("/login", methods=['GET', 'POST'])
 def login():
     login = LoginForm()
-    create = CreateAcctForm()
     if login.validate_on_submit():
         print('LOGIN with:')
         print('username: ' + login.username.data)
@@ -65,7 +64,6 @@ def login():
 @webserver.route("/createacct", methods=['GET', 'POST'])
 def createacct():
     create = CreateAcctForm()
-
     if create.validate_on_submit():
         print('ACCOUNT CREATE with:')
         print('username: ' + create.username.data)
