@@ -4,7 +4,7 @@
 .content {
 	display: flex;
 }
- 
+
 .content-block {
 	background-color: var(--color-foreground);
 	margin: 4% 4%;
