@@ -1,24 +1,44 @@
 import os
 import requests
 
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect
 
-# for login: https://www.youtube.com/watch?v=8aTnmsDMldY
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, FileField, SubmitField
+from wtforms.validators import InputRequired, Length, EqualTo
+
+import flask_login
+login_manager = flask_login.LoginManager()
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
+    password = PasswordField('Password', validators=[InputRequired()])
+    rememberme = BooleanField('Remember Me')
+    submit = SubmitField('Log In')
+
+class CreateAcctForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=50, message='Password must be 8 to 50 characters long')])
+    passconfirm = PasswordField('Re-type password', validators=[InputRequired(), EqualTo('password', message='Passwords must match')])
+    avatar = FileField('Avatar')
+    submit = SubmitField('Create Account')
+
 
 webserver = Flask(__name__)
+webserver.secret_key = 'my-name-a-borat'
 
 API_KEY = '2T50TIVI1285LSG4'
 
 # serve main files
 @webserver.route("/")
-def main():
+def index():
     return render_template("index.html")
 
 # serve search page
 @webserver.route("/search", methods=['GET', 'POST'])
 def search():
-    res = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=2T50TIVI1285LSG4&keywords=' + request.form['query'])
-    json = res.json()['bestMatches']
+    resp = requests.get('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey=' + API_KEY + '&keywords=' + request.form['query'])
+    json = resp.json()['bestMatches']
 
     return render_template("search.html", query=request.form['query'], results=json)
 
@@ -28,9 +48,30 @@ def settings():
     return render_template("settings.html")
 
 
-@webserver.route("/accounts")
-def createaccount():
-    return render_template("accounts.html")
+@webserver.route("/login", methods=['GET', 'POST'])
+def login():
+    login = LoginForm()
+    if login.validate_on_submit():
+        print('LOGIN with:')
+        print('username: ' + login.username.data)
+        print('password: ' + login.password.data)
+        print('remember: ' + str(login.rememberme.data))
+        return redirect('/')
+
+    return render_template("login.html", login=login)
+
+
+@webserver.route("/createacct", methods=['GET', 'POST'])
+def createacct():
+    create = CreateAcctForm()
+    if create.validate_on_submit():
+        print('ACCOUNT CREATE with:')
+        print('username: ' + create.username.data)
+        print('password: ' + create.password.data)
+        print('avatar: ' + create.avatar.data)
+        return redirect('/')
+
+    return render_template("createacct.html", create=create)
 
 # serve favicons
 @webserver.route('/favicon.ico')

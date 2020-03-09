@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/login.css">
+<script src="/static/login.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class='content-block'>
+    <h1>Login</h1>
+    <form class='form-signin' method='post' novalidate>
+        {{ login.hidden_tag() }}
+        <p>
+            {{ login.username.label }}<br>
+            {{ login.username(size=32) }}<br>
+            {% for error in login.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ login.password.label }}<br>
+            {{ login.password(size=32) }}<br>
+            {% for error in login.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ login.rememberme() }} {{ login.rememberme.label }}</p>
+        <p>{{ login.submit() }}</p>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/createacct.css">
+<script src="/static/createacct.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class='content-block'>
+    <h1>Create Account</h1>
+    <form class='form-create' method='post' novalidate>
+        {{ create.hidden_tag() }}
+        <p>
+            {{ create.username.label }}<br>
+            {{ create.username(size=32) }}<br>
+            {% for error in create.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ create.password.label }}<br>
+            {{ create.password(size=32) }}<br>
+            {% for error in create.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ create.passconfirm.label }}<br>
+            {{ create.passconfirm(size=32) }}<br>
+            {% for error in create.passconfirm.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ create.avatar.label }}<br>
+            {{ create.avatar() }}
+        </p>
+        <p>{{ create.submit() }}</p>
+    </form>
+</div>
+{% endblock %}
