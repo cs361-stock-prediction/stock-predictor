@@ -15,7 +15,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired()])
     rememberme = BooleanField('Remember Me')
     submit = SubmitField('Log In')
-    
+
 class CreateAcctForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=50, message='Password must be 8 to 50 characters long')])
@@ -47,7 +47,7 @@ def search():
 def settings():
     return render_template("settings.html")
 
-    
+
 @webserver.route("/login", methods=['GET', 'POST'])
 def login():
     login = LoginForm()
@@ -60,12 +60,12 @@ def login():
         return redirect('/')
 
     return render_template("login.html", login=login)
-    
-    
+
+
 @webserver.route("/createacct", methods=['GET', 'POST'])
 def createacct():
     create = CreateAcctForm()
-    
+
     if create.validate_on_submit():
         print('ACCOUNT CREATE with:')
         print('username: ' + create.username.data)
