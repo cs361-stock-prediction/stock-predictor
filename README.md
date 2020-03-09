@@ -15,7 +15,7 @@ API Documentation [here](docs/API.md).
 
 ## Starting the Server
 
-Simply run `./start.sh` - this will check for requirements, then start the server. *Linux only*
+Simply run `./start.sh` in a linux environment - this will check for requirements, then start the server.
 
 ## Credits
 
