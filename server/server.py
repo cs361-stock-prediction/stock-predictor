@@ -1,17 +1,37 @@
 import os
 import requests
 
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, FileField, SubmitField
+from wtforms.validators import InputRequired, Email, Length, EqualTo
+
+import flask_login
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=50, message='Password must be 8 to 50 characters long')])
+    rememberme = BooleanField('Remember Me')
+    submit = SubmitField('Log In')
+    
+class CreateAcctForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15, message='Username must be 4 to 15 characters long')])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=50, message='Password must be 8 to 50 characters long')])
+    passconfirm = PasswordField('Re-type password', validators=[InputRequired(), EqualTo('password', message='Passwords must match')])
+    avatar = FileField('Avatar')
+    submit = SubmitField('Create Account')
 
 # for login: https://www.youtube.com/watch?v=8aTnmsDMldY
 
 webserver = Flask(__name__)
+webserver.config['SECRET_KEY'] = 'my-name-a-borat'
 
 API_KEY = '2T50TIVI1285LSG4'
 
 # serve main files
 @webserver.route("/")
-def main():
+def index():
     return render_template("index.html")
 
 # serve search page
@@ -28,9 +48,29 @@ def settings():
     return render_template("settings.html")
 
 
-@webserver.route("/login")
-def createaccount():
-    return render_template("login.html")
+#  ~ @webserver.route("/login")
+#  ~ def login():
+    #  ~ form = LoginForm()
+    
+    #  ~ return render_template("login.html", form=form)
+    
+    
+@webserver.route("/login", methods=['GET', 'POST'])
+def login():
+    login = LoginForm()
+    create = CreateAcctForm()
+    if login.validate_on_submit():
+        print('LOGIN with:')
+        print('username: ' + login.username.data)
+        print('password: ' + login.password.data)
+        return redirect('/')
+    if create.validate_on_submit():
+        print('ACCOUNT CREATE with:')
+        print('username: ' + create.username.data)
+        print('password: ' + create.password.data)
+        return redirect('/')
+
+    return render_template("login-new.html", login=login, create=create)
 
 # serve favicons
 @webserver.route('/favicon.ico')
