@@ -23,11 +23,26 @@
 			</div>
 
 			<h1 class="site-title"><a href="/">Stock Predictor</a></h1>
-
+			
+			{% if current_user.is_anonymous %}
 			<div class="login-button"><a href="{{ url_for('login') }}">Login</a></div>
 			<div class="login-button"><a href="{{ url_for('createacct') }}">Create Account</a></div>
+			{% else %}
+			<div class="login-button"><a href="{{ url_for('settings') }}">{{ current_user.name() }}</a></div>
+			<div class="login-button"><a href="{{ url_for('logout') }}">Logout</a></div>
+			{% endif %}
 
 		</header>
+		
+		{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class='flash-message'>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
 		<main class='content'>
 			{% block content %}{% endblock %}
 		</main>

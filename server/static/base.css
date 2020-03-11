@@ -134,3 +134,10 @@ footer {
 .content {
 	margin: 3% var(--padding-sides);
 }
+
+.flash-message {
+	margin: auto;
+	width: 200px;
+	color: var(--color-accent);
+	text-align: center;
+}
