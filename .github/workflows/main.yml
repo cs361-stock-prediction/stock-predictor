@@ -21,15 +21,13 @@ jobs:
           python-version: 3.8
 
       - name: Install Python dependencies
-        run: pip install flake8
+        run: pip install black
 
       - name: Run Linters
         uses: samuelmeuli/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
-          flake8: true
-          flake8_extensions: py
-          flake8_args: "--ignore=E301,E302,E303,E401,E501,E127,E128"
+          black: true
           auto_fix: true
 
   stylelint:
