@@ -1,6 +1,9 @@
-from flask import render_template, send_from_directory, request, redirect
+from flask import render_template, send_from_directory, request, redirect, flash, url_for
 from server import server
 from server.forms import LoginForm, CreateAcctForm
+
+from flask_login import current_user, login_user, logout_user
+from server.models import User
 
 import os, requests
 
@@ -31,15 +34,25 @@ def settings():
 
 @server.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
     form = LoginForm()
     if form.validate_on_submit():
-        print("LOGIN with:")
-        print("username: " + form.username.data)
-        print("password: " + form.password.data)
-        print("remember: " + str(form.rememberme.data))
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        login_user(user, remember=form.rememberme.data)
+        flash('Logged in as ' + user.username)
         return redirect(url_for("index"))
-
+    
     return render_template("login.html", form=form)
+
+@server.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @server.route("/createacct", methods=["GET", "POST"])
