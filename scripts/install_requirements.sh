@@ -23,7 +23,7 @@ else
 fi
 
 echo " + Checking for dependencies"
-for i in flask pymongo flask_login flask_wtf wtforms
+for i in flask flask_wtf wtforms flask_sqlalchemy pymysql flask_migrate flask_login
 do
     install_dep $i
 done
