@@ -24,11 +24,12 @@ class CreateAcctForm(FlaskForm):
             Length(min=4, max=15, message="Username must be 4 to 15 characters long"),
         ],
     )
+    displayname = StringField("Display name")
     password = PasswordField(
         "Password",
         validators=[
             InputRequired(),
-            Length(min=8, max=50, message="Password must be 8 to 50 characters long"),
+            Length(min=8, max=30, message="Password must be 8 to 50 characters long"),
         ],
     )
     passconfirm = PasswordField(

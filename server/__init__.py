@@ -15,5 +15,6 @@ db = SQLAlchemy(server)
 migrate = Migrate(server, db)
 
 login = LoginManager(server)
+login.login_view = "login"
 
 from server import routes, models

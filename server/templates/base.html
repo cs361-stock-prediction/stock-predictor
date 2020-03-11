@@ -28,7 +28,7 @@
 			<div class="login-button"><a href="{{ url_for('login') }}">Login</a></div>
 			<div class="login-button"><a href="{{ url_for('createacct') }}">Create Account</a></div>
 			{% else %}
-			<div class="login-button"><a href="{{ url_for('settings') }}">{{ current_user.username }}</a></div>
+			<div class="login-button"><a href="{{ url_for('settings') }}">{{ current_user.name() }}</a></div>
 			<div class="login-button"><a href="{{ url_for('logout') }}">Logout</a></div>
 			{% endif %}
 
