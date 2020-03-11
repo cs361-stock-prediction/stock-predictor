@@ -5,7 +5,7 @@ on: [pull_request]
 jobs:
 
   flake8_lint:
-    name: Python Linter (flake8)
+    name: Python Linter (black)
     runs-on: ubuntu-latest
 
     steps:
