@@ -31,7 +31,7 @@ def login():
         print('username: ' + form.username.data)
         print('password: ' + form.password.data)
         print('remember: ' + str(form.rememberme.data))
-        return redirect('/')
+        return redirect(url_for('index'))
 
     return render_template("login.html", form=form)
 
@@ -44,7 +44,7 @@ def createacct():
         print('username: ' + form.username.data)
         print('password: ' + form.password.data)
         print('avatar: ' + form.avatar.data)
-        return redirect('/')
+        return redirect(url_for('index'))
 
     return render_template("createacct.html", form=form)
 
