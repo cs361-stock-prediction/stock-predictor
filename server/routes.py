@@ -15,7 +15,7 @@ def index():
 def search():
     resp = requests.get(
         "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&apikey="
-        + Config.AV_API_KEY
+        + server.config['AV_API_KEY']
         + "&keywords="
         + request.form["query"]
     )
