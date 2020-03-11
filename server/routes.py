@@ -60,6 +60,7 @@ def login():
 @server.route("/logout")
 def logout():
     logout_user()
+    flash("Logged out")
     return redirect(url_for("index"))
 
 
