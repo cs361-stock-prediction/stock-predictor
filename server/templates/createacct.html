@@ -9,33 +9,33 @@
 <div class='content-block'>
     <h1>Create Account</h1>
     <form class='form-create' method='post' novalidate>
-        {{ create.hidden_tag() }}
+        {{ form.hidden_tag() }}
         <p>
-            {{ create.username.label }}<br>
-            {{ create.username(size=32) }}<br>
-            {% for error in create.username.errors %}
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
-            {{ create.password.label }}<br>
-            {{ create.password(size=32) }}<br>
-            {% for error in create.password.errors %}
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
-            {{ create.passconfirm.label }}<br>
-            {{ create.passconfirm(size=32) }}<br>
-            {% for error in create.passconfirm.errors %}
+            {{ form.passconfirm.label }}<br>
+            {{ form.passconfirm(size=32) }}<br>
+            {% for error in form.passconfirm.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
-            {{ create.avatar.label }}<br>
-            {{ create.avatar() }}
+            {{ form.avatar.label }}<br>
+            {{ form.avatar() }}
         </p>
-        <p>{{ create.submit() }}</p>
+        <p>{{ form.submit() }}</p>
     </form>
 </div>
 {% endblock %}
