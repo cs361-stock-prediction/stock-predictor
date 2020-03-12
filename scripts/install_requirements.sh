@@ -8,6 +8,8 @@ else
     exit 1
 fi
 
+pip3 install -U pip3 setuptools 
+
 echo " + Checking for dependencies"
 
 if pip3 install -r scripts/requirements.txt; then
