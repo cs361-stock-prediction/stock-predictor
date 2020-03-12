@@ -1,0 +1,14 @@
+name: CI Server Test
+on: [pull_request]
+
+jobs:
+  linux:
+    name: Check Server Run
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Run Server Test
+      run: ./start.sh -c

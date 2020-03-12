@@ -1,0 +1,9 @@
+setuptools
+flask
+flask_wtf
+wtforms
+flask_sqlalchemy
+pymysql
+flask_migrate
+flask_login
+requests
