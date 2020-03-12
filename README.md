@@ -1,5 +1,5 @@
 
-![CI](https://github.com/cs361-stock-prediction/stock-predictor/workflows/CI/badge.svg)
+![CI](https://github.com/cs361-stock-prediction/stock-predictor/workflows/CI/badge.svg) ![CI Server Test](https://github.com/cs361-stock-prediction/stock-predictor/workflows/CI%20Server%20Test/badge.svg)
 
 # stock-predictor
 
