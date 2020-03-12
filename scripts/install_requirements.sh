@@ -8,7 +8,7 @@ else
     exit 1
 fi
 
-pip3 install -U pip3 setuptools 
+pip3 install -U pip setuptools 
 
 echo " + Checking for dependencies"
 
