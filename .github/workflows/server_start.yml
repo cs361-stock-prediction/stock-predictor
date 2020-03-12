@@ -11,4 +11,4 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Run Server Test
-      run: ./start.sh
+      run: ./start.sh -c
