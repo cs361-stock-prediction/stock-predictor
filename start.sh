@@ -11,7 +11,7 @@ while getopts ":c" arg; do
 	esac
 done
 
-if [ $CHECK -eq 1 ]; then
+if [[ $CHECK -eq 1 ]]; then
 	exit 0
 fi
 
