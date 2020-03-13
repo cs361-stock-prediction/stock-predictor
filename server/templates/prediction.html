@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+<link rel="stylesheet" href="/static/prediction.css">
+<script src="/static/prediction.js" charset="utf-8" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class='content-block'>
+	<h1>Prediction for {{ stock }}</h1>
+	<img class="placeholder" src="/static/googlestock.png">
+</div>
+{% endblock %}

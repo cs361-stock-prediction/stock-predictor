@@ -33,6 +33,10 @@ def search():
 
     return render_template("search.html", query=request.form["query"], results=json)
 
+@server.route("/prediction/<stock>")
+def prediction(stock):
+    return render_template("prediction.html", stock=stock)
+
 
 @server.route("/login", methods=["GET", "POST"])
 def login():
