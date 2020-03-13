@@ -1,4 +1,5 @@
 setuptools
+testresources
 flask
 flask_wtf
 wtforms
