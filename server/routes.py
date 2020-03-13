@@ -35,6 +35,35 @@ def search():
 
 @server.route("/prediction/<stock>")
 def prediction(stock):
+
+    # Collect data about stock
+
+    resp = requests.get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
+            + str(stock)
+            + "&outputsize=compact&datatype=json&apikey="
+            + server.config["AV_API_KEY"])
+
+    # Convert data to python iterable format
+
+    json = resp.json()
+
+    data = []
+
+    for day in json['Time Series (Daily)']:
+        data.append([a, json['Time Series (Daily)'][day]['4. close']])
+
+    data.reverse()
+
+    print(data)
+
+    # Generate trendline
+
+
+
+    # Extrapolate Data
+
+    
+
     return render_template("prediction.html", stock=stock)
 
 
