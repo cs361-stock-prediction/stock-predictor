@@ -8,11 +8,11 @@ else
     exit 1
 fi
 
-python3 -m pip install -U --user pip setuptools 
+pip install -U --user pip setuptools 
 
 echo " + Checking for dependencies"
 
-if python3 -m pip install --user -r scripts/requirements.txt; then
+if pip install --user -r scripts/requirements.txt; then
 	echo " + Successully Installed Modules"
 	exit 0
 fi
