@@ -15,6 +15,9 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):  # toString()
         return "<User {}>".format(self.username)
+        
+    def get_avatar(self):
+        return "/static/avatars/" + self.avatar if self.avatar else "/static/default.png"
 
     def name(self):
         return self.displayname or self.username

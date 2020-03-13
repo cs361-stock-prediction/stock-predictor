@@ -30,7 +30,7 @@
 	    {% else %}
 	    <div class="login-button"><a href="{{ url_for('logout') }}">Logout</a></div>
 	    <div class="login-button">
-		<a href="{{ url_for('settings') }}">{{ current_user.name() }} <img class='avatar' src='/static/avatars/{{ current_user.avatar }}'></a>
+		<a href="{{ url_for('settings') }}">{{ current_user.name() }} <img class='avatar' src='{{ current_user.get_avatar() }}'></a>
 	    </div>
 	    {% endif %}
 
