@@ -8,4 +8,4 @@ pymysql
 flask_migrate
 flask_login
 requests
-bokeh
+plotly
