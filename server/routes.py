@@ -12,6 +12,7 @@ from server.forms import LoginForm, CreateAcctForm
 from flask_login import current_user, login_user, logout_user, login_required
 from server.models import User
 
+from werkzeug.utils import secure_filename
 import os, requests
 
 # serve main files
@@ -71,7 +72,21 @@ def createacct():
 
     form = CreateAcctForm()
     if form.validate_on_submit():
-        new_user = User(username=form.username.data, displayname=form.displayname.data)
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is not None:  # if user already exists
+            flash("Username already taken")
+            return redirect(url_for("login"))
+        avatar = form.avatar.data
+        av_filename = "default.png"
+        if avatar is not None:  # use uploaded image if it exists
+            av_filename = secure_filename(avatar.filename)
+            avatar.save(os.path.join(server.instance_path, 'static', "avatars", av_filename))
+        
+        new_user = User(
+            username=form.username.data,
+            displayname=form.displayname.data,
+            avatar=av_filename,
+        )
         new_user.set_password(form.password.data)
         db.session.add(new_user)
         db.session.commit()

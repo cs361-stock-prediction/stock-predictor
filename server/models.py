@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     displayname = db.Column(db.String(64))
     password = db.Column(db.String(128), nullable=False)
-    avatar = db.Column(db.LargeBinary())
+    avatar = db.Column(db.String(128))
     favorites = db.Column(db.PickleType())
     history = db.Column(db.PickleType())
 

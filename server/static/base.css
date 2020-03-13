@@ -94,6 +94,13 @@ header {
 	color: var(--color-accent);
 }
 
+.avatar {
+	height: 50px;
+	margin-left: 5px;
+	margin-bottom: -10px;
+	border-radius: 50%;
+}
+
 /*
  *  === FOOTER ===
  */

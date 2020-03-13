@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, FileField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired, Length, EqualTo
+from flask_wtf.file import FileField, FileAllowed
 
 
 class LoginForm(FlaskForm):
@@ -39,5 +40,8 @@ class CreateAcctForm(FlaskForm):
             EqualTo("password", message="Passwords must match"),
         ],
     )
-    avatar = FileField("Avatar")
+    avatar = FileField(
+        "Avatar",
+        validators=[FileAllowed(["jpg", "jpeg", "jpe", "png"], "Images only!")],
+    )
     submit = SubmitField("Create Account")
