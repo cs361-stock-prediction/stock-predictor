@@ -9,3 +9,4 @@ flask_migrate
 flask_login
 requests
 plotly
+datetime

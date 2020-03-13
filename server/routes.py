@@ -14,7 +14,7 @@ from server.models import User
 
 import plotly.graph_objects as go
 
-import os, requests
+import os, requests, datetime
 
 # serve main files
 @server.route("/")
@@ -46,11 +46,11 @@ def prediction(stock):
             + server.config["AV_API_KEY"])
 
     # Convert data to python iterable format
-
     json = resp.json()
 
     data = []
     date = []
+
     for day in json['Time Series (Daily)']:
         data.append(float(json['Time Series (Daily)'][day]['4. close']))
         date.append(day)
@@ -58,45 +58,44 @@ def prediction(stock):
     data.reverse()
     date.reverse()
 
-    print (data)
-    print (date)
-    
-    # Generate trendline
-
-
-
-
-    #turn dates to x values:
-
-    import datetime
-
+    # Turn dates to x values:
     datemask = "%Y-%m-%d"
-
     datetimes = [datetime.datetime.strptime(x, datemask) for x in date]
-
     base = datetimes[0]
 
+    x_idx = [0]
+    [x_idx.append((d1 - base).days) for d1 in datetimes[1:]]
 
-    x = [0]
-    [x.append((d1 - base).days) for d1 in datetimes[1:]]
+    # Build Trendline (slope)
+    slope = ((data[-10] - data[-1]) / (x_idx[-10] - x_idx[-1]))
 
-    
-    slope = ((data[-10] - data[-1]) / (x[-10] - x[-1]))
+    # Extrapolate based on that slope
+    proj = [data[-1]]
 
-    x1 = [x[-1]]
-    d1 = [data[-1]]
-
-    for n in range(0, 10):
-        d1.append(d1 [-1] + (1 * slope))
-        x1.append(x1[-1] +1)
+    for n in range(0, server.config['PREDICTION_LENGTH']):
+        proj.append(proj [-1] + (1 * slope))
 
 
+    # Turn x values into useful things: 
+    x_data = datetimes
+    x_proj = [datetimes[-1]]
+
+    # Generate the datetime array for the prediction
+    for n in range (0, server.config['PREDICTION_LENGTH']):
+        x_proj.append(x_proj[-1] + datetime.timedelta(days=1))
+
+    # Convert to strings for graph
+    x_data = [datetime.datetime.strftime(n, datemask) for n in x_data]
+    x_proj = [datetime.datetime.strftime(n, datemask) for n in x_proj]
+
+    # Generate Plot
     fig = go.Figure()
-    fig.add_trace(go.Scatter(x=x, y=data, name='Raw Data Graph',
-                            line=dict(color='royalblue', width=3)))
-    fig.add_trace(go.Scatter(x=x1, y=d1, name='Porj Graph',
-                            line=dict(color='aqua', width=3)))
+    fig.add_trace(go.Scatter(x=x_data, y=data, name='Stock Data',
+                            line=dict(color='royalblue', width=3), mode='lines'))
+    fig.add_trace(go.Scatter(x=x_proj, y=proj, name='Projection',
+                            line=dict(color='aqua', width=3), mode='lines'))
 
+    # Present plot
     fig.show()
 
 
