@@ -5,7 +5,7 @@ from flask import (
     redirect,
     flash,
     url_for,
-    jsonify
+    jsonify,
 )
 from server import server, db
 from server.forms import LoginForm, CreateAcctForm
@@ -39,6 +39,7 @@ def search():
 def prediction(stock):
     return render_template("prediction.html", stock=stock)
 
+
 @server.route("/prediction/<stock>/json")
 def predictionjson(stock):
     resp = requests.get(
@@ -50,6 +51,7 @@ def predictionjson(stock):
 
     # Convert data to python iterable format
     return jsonify(resp.json())
+
 
 @server.route("/login", methods=["GET", "POST"])
 def login():
