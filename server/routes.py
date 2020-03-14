@@ -5,6 +5,7 @@ from flask import (
     redirect,
     flash,
     url_for,
+    jsonify,
 )
 from server import server, db
 from server.forms import LoginForm, CreateAcctForm
@@ -12,7 +13,7 @@ from server.forms import LoginForm, CreateAcctForm
 from flask_login import current_user, login_user, logout_user, login_required
 from server.models import User
 
-import os, requests
+import os, requests, datetime
 
 # serve main files
 @server.route("/")
@@ -37,6 +38,19 @@ def search():
 @server.route("/prediction/<stock>")
 def prediction(stock):
     return render_template("prediction.html", stock=stock)
+
+
+@server.route("/prediction/<stock>/json")
+def predictionjson(stock):
+    resp = requests.get(
+        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="
+        + str(stock)
+        + "&outputsize=compact&datatype=json&apikey="
+        + server.config["AV_API_KEY"]
+    )
+
+    # Convert data to python iterable format
+    return jsonify(resp.json())
 
 
 @server.route("/login", methods=["GET", "POST"])
