@@ -32,7 +32,7 @@ fetch(url).then(response => {
 function parseResp(res) {
 
 	console.log(Object.keys(res));
-	for (date of Object.keys(res)) {
+	for (let date of Object.keys(res)) {
 		// ~ console.log(date, res[`${date}`]['4. close']);
 
 		data.x.push(date);
