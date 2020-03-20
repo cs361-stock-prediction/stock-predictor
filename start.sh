@@ -1,3 +1,6 @@
+
+set -eux
+
 # If requirements successfully installed, print, else fail
 if ./scripts/install_requirements.sh; then
 	echo " + Successful Install of Requirements."
@@ -7,6 +10,7 @@ else
 fi
 
 # Get arguments
+CHECK=1
 while getopts ":c" arg; do
 	case $arg in
 		c) CHECK=1;;
