@@ -10,7 +10,7 @@ else
 fi
 
 # Get arguments
-CHECK=1
+CHECK=0
 while getopts ":c" arg; do
 	case $arg in
 		c) CHECK=1;;
